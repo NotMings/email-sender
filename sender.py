@@ -55,7 +55,7 @@ if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read(args.config)
     sender = args.sender if args.sender else config.get('email', 'sender')
-    sender_name = args.sender_name if args.sender_name else config.get('email', 'sender_name')
+    sender_name = args.sender_name if args.sender_name else config.get('config', 'sender_name')
     password = args.password if args.password else config.get('email', 'password')
     server = args.server if args.server else config.get('email', 'server')
     port = args.port if args.port else config.getint('email', 'port')
