@@ -1,10 +1,14 @@
 import argparse
 import configparser
 import smtplib
+import sys
+import io
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 
 def send_email(sender, password, server, port, connection, recipient, cc, subject, body, attachment):
     msg = MIMEMultipart()
