@@ -66,4 +66,4 @@ if __name__ == '__main__':
     body = args.body if args.body else config.get('config', 'body')
     attachment = args.attachment if args.attachment else config.get('config', 'attachment')
 
-    send_email(sender, password, server, port, connection, recipient, cc, subject, body, attachment)
+    send_email(sender, sender_name, password, server, port, connection, recipient, cc, subject, body, attachment)
