@@ -6,6 +6,7 @@ connection = ssl
 port = 465
 
 [config]
+sender_name = sender_name
 recipient = recipient@example.com
 subject = Email Subject
 body = Hello, World!

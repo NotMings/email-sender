@@ -10,9 +10,9 @@ from email import encoders
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 
-def send_email(sender, password, server, port, connection, recipient, cc, subject, body, attachment):
+def send_email(sender, sender_name, password, server, port, connection, recipient, cc, subject, body, attachment):
     msg = MIMEMultipart()
-    msg['From'] = sender
+    msg['From'] = sender_name if sender_name else sender
     msg['To'] = recipient
     msg['Cc'] = cc
     msg['Subject'] = subject
@@ -40,6 +40,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', default='mail.conf', help='Path to config file')
     parser.add_argument('--sender', default=None, help='Email sender')
+    parser.add_argument('--sender_name', default=None, help='Email sender name')
     parser.add_argument('--password', default=None, help='Email password')
     parser.add_argument('--server', default=None, help='Email server')
     parser.add_argument('--port', default=None, type=int, help='Email port')
@@ -54,6 +55,7 @@ if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read(args.config)
     sender = args.sender if args.sender else config.get('email', 'sender')
+    sender_name = args.sender_name if args.sender_name else config.get('email', 'sender_name')
     password = args.password if args.password else config.get('email', 'password')
     server = args.server if args.server else config.get('email', 'server')
     port = args.port if args.port else config.getint('email', 'port')
