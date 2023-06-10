@@ -2,4 +2,12 @@
 sender = your_email@example.com
 password = your_password
 server = smtp.example.com
+connection = ssl
 port = 465
+
+[config]
+recipient = recipient@example.com
+subject = Email Subject
+body = Hello, World!
+cc =
+attachment =
